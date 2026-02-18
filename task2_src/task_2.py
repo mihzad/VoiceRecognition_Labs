@@ -170,20 +170,40 @@ if __name__ == "__main__":
     dswlm_hypothesis_raw = """і раптом літо згадавши як добре йому було прокидається з невчасно 
     розпочати сплячки розливає сонце санаторного квітникарство канонізованого
       основоположника аортокоронарного """
+    
+    wav2vec2_anton_hypothesis_raw="""і раптом літо згадавши як добре йому було прокидаються з невчасно
+      розпочатої сплячки розливає сонце над нивами та лісами і спалахує навколо баби не
+        літо бускова гирань гнучки петрові батоги жовті кульбабки білосніжні ромажки усе 
+        знову квітне сподіваючись на тепло удруге вбираються у весільний одяг глуха кропива
+          червоніють навіть духмяні сунечки небиса осяяні яскравим холодним промінням низько
+            схиляються до справжніх осінніх квітів жоржин айстир чорнобривців сальвій вони будуть
+              стояти до останнього закриваючись пелюстками від перших ще не дуже жорстоких морозів
+                але це буде за кілька днів всього кілька днів а зараз баби не літо знову замайоріли
+                  в повітрі метелики знову гудуть джмелі знову снують доквіток ніби і нестомлені
+                    працею бджоли"""
 
+    wav2vec2_vika_hypothesis_raw="""і раптом літо згадавши як добре йому було прокидаються з невчасно
+      розпочатої сплячки розливає сонце над нивами та лісами і спалахує навколо баби не літо бускова
+        гирань гнучкі петрові батоги жовці кульбабки білосніжні ромашки усе знову квітне сподіваючись
+          на тепло удруге вбирається у весільний одяг глуха кропива червоніють навіть духм'яні сунечки
+            небиса усяєні яскравим холодним промінням низько схиляються до справжніх осінніх квітів
+              жоржен айстер чорнобривців сальвій вони будуть стояти до останнього закриваючись пелюстками
+                від перших ще не дуже жорстоких морозів але це буде за кілька днів всього кілька днів
+                  а зараз баби не літо знову замайоріли в повітрі метелики знову гудуть джмелі знову 
+                  снують доквіто кніби і нестомлені працею бджоли"""
     print("raw ref:", reference_raw)
-    print("raw hyp: ", dswlm_hypothesis_raw) #wav2vec2_hypothesis_raw
+    print("raw hyp: ", wav2vec2_vika_hypothesis_raw) #wav2vec2_hypothesis_raw
 
     ref_clean = clean_text(reference_raw)
-    hyp_clean = clean_text(dswlm_hypothesis_raw) #wav2vec2_hypothesis_raw
+    hyp_clean = clean_text(wav2vec2_vika_hypothesis_raw) #wav2vec2_hypothesis_raw
 
     print(f"\nclean ref: '{ref_clean}'")
     print(f"clean hyp: '{hyp_clean}'")
 
     wer_result = calculate_metrics(ref_clean, hyp_clean, mode='word')
-    print_results("Wav2Vec2 WER", wer_result, file="dswlm_visual_wer.txt")
-    print_results_csv(wer_result, file="dswlm_wer.csv")
+    print_results("Wav2Vec2 WER", wer_result, file="wav2vec2_vika_visual_wer.txt")
+    print_results_csv(wer_result, file="wav2vec2_vika_wer.csv")
 
     cer_result = calculate_metrics(ref_clean, hyp_clean, mode='char')
-    print_results("Wav2Vec2 CER", cer_result, file="dswlm_visual_cer.txt")
-    print_results_csv(cer_result, file="dswlm_cer.csv")
+    print_results("Wav2Vec2 CER", cer_result, file="wav2vec2_vika_visual_cer.txt")
+    print_results_csv(cer_result, file="wav2vec2_vika_cer.csv")
